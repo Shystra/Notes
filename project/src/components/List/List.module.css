@@ -1,6 +1,9 @@
 .card{
-    background-color: var(--white);
+    
+    background: rgb(12,8,66);
+background: linear-gradient(90deg, rgba(12,8,66,1) 42%, rgba(11,23,126,1) 94%);
     padding: .7rem;
+    color: var(--white);
     display: flex;
     justify-content: space-between;
     margin-bottom: 1rem;
@@ -9,13 +12,33 @@
 }
 
 .icon svg{
+    
     margin-right: .6rem;
+   margin-top: .9rem;
+
+    
+   
+
 }
 
 .card input{
+    padding: 10px;
+    
+    margin-bottom: 1%;
+    border-radius: 5px;
     border: none;
 }
 
 .inputCompleted{
     text-decoration: line-through;
+    width: 44%;
+    margin: 1%;
+    
+}
+
+.input_tasks{
+    margin: 1%;
+    width: 44%;
+    
+    
 }

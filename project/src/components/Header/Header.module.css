@@ -1,7 +1,9 @@
 .container {
-    color: var(--primary);
+    color: var(--white);
     margin-top: 4rem;
     display: flex;
     justify-content: center;
-
+    background: rgb(12,8,66);
+    background: linear-gradient(90deg, rgba(12,8,66,1) 42%, rgba(11,23,126,1) 94%);
+    border-radius: 8px;
 }

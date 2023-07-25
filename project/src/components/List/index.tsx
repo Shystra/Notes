@@ -49,8 +49,12 @@ const ListBase: ForwardRefRenderFunction<IListRef, IProps> = (
                     <input type="text" value={todo.description} 
                     className={styles.inputCompleted} 
                     
+                    
                     />
-                        
+                    
+                    
+                    
+                       
                     
                     
                     ) 
@@ -58,7 +62,8 @@ const ListBase: ForwardRefRenderFunction<IListRef, IProps> = (
                     
                         : (
                             <>
-                            <input 
+                            <input
+                            className={styles.input_tasks} 
                             type="text" 
                             value={todo.description} 
                             ref={inputRefs[index]}

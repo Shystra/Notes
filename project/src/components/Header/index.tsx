@@ -6,7 +6,7 @@ export function Header() {
 
     return (
         <div className={styles.container}>
-            <h1>Header</h1>
+            <h1>Tasks</h1>
         </div>
     )
 }

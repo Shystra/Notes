@@ -12,7 +12,8 @@
 .createTask button{
     width: 20%;
     padding: .7rem;
-    background-color: var(--primary);
+    background: rgb(12,8,66);
+    background: linear-gradient(90deg, rgba(12,8,66,1) 42%, rgba(11,23,126,1) 94%);
     color: var(--white);
     border: none;
     border-radius: 0 5px 5px 0;
@@ -22,20 +23,30 @@
 }
 
 .filter {
+    padding: 1rem;
     justify-content: space-between;
     display: flex;
-    margin: 2rem 0;
+    margin: 1rem 0;
+    
 }
 
 .finish, .progress {
     background-color: var(--white);
     padding: .5rem;
+    
     width: 45%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 .finish{
+   
     color: var(--secondary);
-
+    
+    
 }
 .progress{
     color: var(--primary);

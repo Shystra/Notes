@@ -13,9 +13,11 @@
 }
 
 body{
+    
     background-color: var(--gray-100);
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    -webkit-font-smoothing: antialiased
+    -webkit-font-smoothing: antialiased;
+
 }
