@@ -1,7 +1,7 @@
 import { Header } from '../../components/Header';
 import { List } from '../../components/List';
 import styles from './Home.module.css';
-import {useState} from 'react';
+import {useState, ChangeEvent, useEffect} from 'react';
 import { v4 as uuid}  from 'uuid';
 
 export interface ITodo{
@@ -13,6 +13,29 @@ export interface ITodo{
 export function Home (){
     const [todo, setTodo] = useState<string>('');
     const [todos, setTodos] = useState<ITodo[]>([]);
+    const [totalInProgress, setTotalInProgress] = useState(0);
+    const [totalComplete, setTotalComplete] = useState(0);
+
+    useEffect(() => {
+        const newTotalInProgress = todos
+        .reduce((previusValue, current) => 
+            !current.completed ? previusValue + 1 : previusValue,
+        0,
+        );
+
+        const newTotalCompleted = todos
+        .reduce((previusValue, current) => 
+            current.completed ? previusValue + 1 : previusValue,
+        0,
+        );
+
+        setTotalInProgress(newTotalInProgress);
+        setTotalComplete(newTotalCompleted);
+        
+    }, [todos]);
+
+   
+        
     
 
     
@@ -28,11 +51,38 @@ export function Home (){
     }
     // console.log('todos',todos)
 
-    const deleteTodo = (id) => {
-        const filterTodos = todos.filter(todo => todo.id != id)
+    const deleteTodo = (id: string) => {
+        const filterTodos = todos.filter((todo) => todo.id != id)
 
         setTodos(filterTodos);
-    }
+    };
+
+    const completeTodo = (id: string) => {
+        const newTodosState = todos.map((todo) => {
+            if(todo.id === id){
+                return {...todo, completed: !todo.completed}
+            }else{
+                return todo;
+            }
+        });
+        setTodos(newTodosState);
+ }
+
+ const editTodo = (event: ChangeEvent<HTMLInputElement>, id: string) => {
+    const newTodosState = todos.map((todo) => {
+        if(todo.id === id){
+            return {
+                ...todo,
+                description: event.target.value,
+            };
+        }
+        return todo;
+    })
+    setTodos(newTodosState);
+}
+
+
+
 
     return(
         <div>
@@ -44,11 +94,15 @@ export function Home (){
                 <button onClick={addTodo}>Adicionar</button>
             </div>
             <div className={styles.filter}>
-                <span className={styles.finish}>Finalizados: 5 tarefas</span>
-                <span className={styles.progress}>Em progresso: 5 tarefas</span>
+                <span className={styles.finish}>Finalizados: {totalComplete} tarefas</span>
+                <span className={styles.progress}>Em progresso: {totalInProgress} tarefas</span>
             </div>
 
-            <List todos={todos} deleteTodo={deleteTodo}/>
+            <List todos={todos} deleteTodo={deleteTodo} 
+            completeTodo={completeTodo}
+            editTodo={editTodo}
+            
+            />
 
             
 
